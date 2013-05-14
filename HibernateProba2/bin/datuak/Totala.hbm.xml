@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25-feb-2013 18:35:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="datuak.Totala" table="totala" catalog="db_acb">
+        <composite-id name="id" class="datuak.TotalaId">
+            <key-property name="taldea" type="string">
+                <column name="taldea" length="10" />
+            </key-property>
+            <key-property name="partida" type="int">
+                <column name="partida" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="partida" class="datuak.Partida" update="false" insert="false" fetch="select">
+            <column name="partida" not-null="true" />
+        </many-to-one>
+        <property name="puntuak" type="java.lang.Integer">
+            <column name="puntuak" />
+        </property>
+        <property name="t2Jaurtiak" type="java.lang.Integer">
+            <column name="t2_jaurtiak" />
+        </property>
+        <property name="t2Sartuak" type="java.lang.Integer">
+            <column name="t2_sartuak" />
+        </property>
+        <property name="t3Jaurtiak" type="java.lang.Integer">
+            <column name="t3_jaurtiak" />
+        </property>
+        <property name="t3Sartuak" type="java.lang.Integer">
+            <column name="t3_sartuak" />
+        </property>
+        <property name="t1Jaurtiak" type="java.lang.Integer">
+            <column name="t1_jaurtiak" />
+        </property>
+        <property name="t1Sartuak" type="java.lang.Integer">
+            <column name="t1_sartuak" />
+        </property>
+        <property name="rebDef" type="java.lang.Integer">
+            <column name="reb_def" />
+        </property>
+        <property name="rebEras" type="java.lang.Integer">
+            <column name="reb_eras" />
+        </property>
+        <property name="asistentziak" type="java.lang.Integer">
+            <column name="asistentziak" />
+        </property>
+        <property name="galdutakoak" type="java.lang.Integer">
+            <column name="galdutakoak" />
+        </property>
+        <property name="berreskuratutakoak" type="java.lang.Integer">
+            <column name="berreskuratutakoak" />
+        </property>
+        <property name="kontraerasoak" type="java.lang.Integer">
+            <column name="kontraerasoak" />
+        </property>
+        <property name="tapAld" type="java.lang.Integer">
+            <column name="tap_ald" />
+        </property>
+        <property name="tapKont" type="java.lang.Integer">
+            <column name="tap_kont" />
+        </property>
+        <property name="mateak" type="java.lang.Integer">
+            <column name="mateak" />
+        </property>
+        <property name="fpAld" type="java.lang.Integer">
+            <column name="fp_ald" />
+        </property>
+        <property name="fpKont" type="java.lang.Integer">
+            <column name="fp_kont" />
+        </property>
+        <property name="balorazioa" type="java.lang.Integer">
+            <column name="balorazioa" />
+        </property>
+    </class>
+</hibernate-mapping>
