@@ -28,12 +28,12 @@ public class Erauzlea {
 		System.out.println(s);
 		String html;
 
-//    	for(int i=hasiera_denboraldia;i<57;i++)//35-->1991;;56-->2012
-		for(int i=hasiera_denboraldia;i<36;i++)
+    	for(int i=hasiera_denboraldia;i<57;i++)//35-->1991;;56-->2012
+//		for(int i=hasiera_denboraldia;i<36;i++)
     	{
     		hasiera_denboraldia=i;
-//    		for(int j=hasiera_partidua;j<307;j++)//306--> Liga Regularra 34 jornada * 9 partida jornadako
-    		for(int j=hasiera_partidua;j<2;j++)
+    		for(int j=hasiera_partidua;j<307;j++)//306--> Liga Regularra 34 jornada * 9 partida jornadako
+//    		for(int j=hasiera_partidua;j<2;j++)
     		{
     			html = erauziHTML(i,j);
     			gordeHTML(html, db_helbidea, i, j);    		}

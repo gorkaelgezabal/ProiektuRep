@@ -10,5 +10,10 @@
 		<managed-bean-class>html_erauzlea.Erauzlea</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>progressBean</managed-bean-name>
+		<managed-bean-class>gui.beans.ProgressBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

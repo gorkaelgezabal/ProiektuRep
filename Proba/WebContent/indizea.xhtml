@@ -5,18 +5,58 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui"  >
+	xmlns:p="http://primefaces.org/ui"   >
 
 <h:head>
-<title>Disponibilidad establecida</title>
+	<f:facet name="first">
+		    <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<title>Indizea</title>
+<!-- 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/style.css" /> -->
+			<h:outputStylesheet library="css" name="style.css"  />
+			
+	</f:facet>
+
 </h:head>
 
 <h:body>
+<!-- <h:outputScript library="js" name="common.js" /> -->
  <p:panel header="Info">
- 	<h:outputText value="Proba politx bet."></h:outputText>
- 	<h:form>
+   	<p:tabMenu activeIndex="0">  
+    	<p:menuitem value="1.-HTML Eskuraketa" url="/ui/tabMenu.jsf" icon="ui-icon-wrench"/>  >  
+    	<p:menuitem value="2.-Datu-baseratu" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document"/>  
+    	<p:menuitem value="3.-Datu-analisia" url="/ui/tabMenuSupport.jsf" icon="ui-icon-search"/>   
+	</p:tabMenu>
+<p:fieldset legend="Ongietorri">  
+    <h:panelGrid columns="2" cellpadding="10">  
+
+        <h:outputText  
+            value="Ongietorri datuen ACBko datu analizatzailera. Begi bistako den moduan, datu analisia burutzeko hiru pauso jarraitu behar ditugu. 
+            Lehenik analisirako erabiliko dugun datu multzoa eskuratuko dugu. Ondoren datu multzoa birfinduko da, datuak formatu egokian datu-baseratuz eta alferrikako datuak ezabatuz. Hau eginda prest gaude, 
+            behar ditugun fitxategi eta dokumentuak sorrarazteko gure analisirako." />  
+    </h:panelGrid>  
+</p:fieldset> 
+<p:separator id="separator"/> 
+ 
+ 
+ <p:growl id="growl" />
+ <h3>Deskarga</h3>  
+    <p:commandButton value="Start" type="button" onclick="pbAjax.start();startButton2.disable();" widgetVar="startButton2" />  
+    <p:commandButton value="Cancel" actionListener="#{progressBean.cancel}" oncomplete="pbAjax.cancel();startButton2.enable();" />  
+  
+    <p:progressBar widgetVar="pbAjax" ajax="true" value="#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated">  
+        <p:ajax event="complete" listener="#{progressBean.onComplete}" update="growl" oncomplete="startButton2.enable()"/>  
+    </p:progressBar>
+    
+    
+    
+    <p:separator id="separator2"/> 
+
+    	<h:form>
  		<p:commandButton action="#{erauzlea.ateraEtaGordeHTML()}" value="Parseatu" ajax="false"></p:commandButton>
  	</h:form>
+
+ 	
  </p:panel> 
 
 </h:body>

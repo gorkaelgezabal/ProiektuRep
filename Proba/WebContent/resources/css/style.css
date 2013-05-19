@@ -1,0 +1,4 @@
+.animated .ui-progressbar-value { 
+                background-image: url(/images/ajax-loader.gif); 
+            }
+            
