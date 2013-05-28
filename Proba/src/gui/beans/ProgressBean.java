@@ -7,6 +7,8 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;  
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext; 
+
+import parseatzailea.Parser;
 import html_erauzlea.Erauzlea;
   
 public class ProgressBean implements Serializable {  
@@ -17,7 +19,7 @@ public class ProgressBean implements Serializable {
 	ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
 	private String db_helbidea = context.getRealPath("LACB");
 	private String html;
-	
+	private boolean disabled = true;
 	
     public Integer getProgress() {  
 
@@ -43,7 +45,9 @@ public class ProgressBean implements Serializable {
     					
     					hasiera_partidua = j+1;
     					
-    					if(hasiera_partidua>306){
+    					if(hasiera_partidua>2){
+
+//    					if(hasiera_partidua>306){
     						hasiera_denboraldia=i+1;
     						hasiera_partidua = 1;
     					}
@@ -63,14 +67,29 @@ public class ProgressBean implements Serializable {
     			return progress;
 
     }  
-  
+    
     public void setProgress(Integer progress) {  
         this.progress = progress;  
     }  
       
-    public void onComplete() {  
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Progress Completed", "Progress Completed"));  
-    }  
+
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
+
+	public void onComplete() {  
+       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datuen eskuraketa burututa", "Itxaron datuak parseatu bitartean lanean hasi aurretik"));
+    }
+    
+    public void parseatu() {  
+        Parser.parseatu();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parseaketa burututa. Dena prest!", "Parseaketa burututa. Dena prest!"));
+     }   
+    
       
     public void cancel() {  
         progress = null;  

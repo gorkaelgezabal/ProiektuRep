@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<title>Indizea</title>
+		<!-- 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/style.css" /> -->
+		<h:outputStylesheet library="css" name="style.css" />
+
+	</f:facet>
+
+</h:head>
+
+<h:body>
+
+	<p:panel header="Info">
+		<p:tabMenu activeIndex="0">
+			<p:menuitem value="1.-HTML Eskuraketa" url="/faces/indizea.xhtml"
+				icon="ui-icon-wrench" />  >  
+    	<p:menuitem value="2.-Datu-baseratu"
+				url="/faces/parseatzailea.xhtml" icon="ui-icon-document" />
+			<p:menuitem value="3.-Datu-analisia" url="/ui/tabMenuSupport.jsf"
+				icon="ui-icon-search" />
+		</p:tabMenu>
+		<p:fieldset legend="Deskribapena">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputText
+					value="Hurrengo pauso honetan aurretik aipatu bezala, erbailgarriak ez diren datuak ezabatzeari ekingo diogu. Horrez gain formatu estandar batean gordeko dira." />
+			</h:panelGrid>
+		</p:fieldset>
+		<p:separator id="separator" />
+
+		<h:form>
+			<p:commandButton action="#{parser.parseatu()}" value="Parseatu"
+				ajax="false"></p:commandButton>
+		</h:form>
+
+
+	</p:panel>
+
+</h:body>
+</html>

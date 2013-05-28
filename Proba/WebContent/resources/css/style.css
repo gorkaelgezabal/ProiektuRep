@@ -1,4 +1,7 @@
 .animated .ui-progressbar-value { 
-                background-image: url(/images/ajax-loader.gif); 
+                background-image: url('http://www.primefaces.org/showcase/images/pbar-ani.gif'); 
             }
+.ui-widget, .ui-widget .ui-widget {
+				font-size: 90% !important;
+}
             

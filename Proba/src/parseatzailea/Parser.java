@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,14 +22,22 @@ import org.jsoup.select.Elements;
 
 
 public class Parser {
-	public static List<datuak.Partida> parseatu(String helbidea){
+	
+	public static void proba(){
+		System.out.println("Proba");
+	}
+	public static List<datuak.Partida> parseatu(){
 		
 		try{
+			ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
+			String helbidea =context.getRealPath("LACB");
 			boolean baliokoa;
 			List<datuak.Partida> partidak = new ArrayList<datuak.Partida>();
 			List<datuak.Totala> aurkariak = new ArrayList<datuak.Totala>();
 			datuak.DatuBasea db = new datuak.DatuBasea();
+			
 			db.ireki();
+			db.garbitu();
 			File dir = new File(helbidea);
 			String[] fitxategiak = dir.list();
 			for(int i=0;i<fitxategiak.length;i++)

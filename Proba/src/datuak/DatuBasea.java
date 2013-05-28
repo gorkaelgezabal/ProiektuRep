@@ -8,6 +8,7 @@ import org.apache.log4j.BasicConfigurator;
 	import org.apache.log4j.Logger;
 	import org.hibernate.Session;
 import datuak.HibernateUtil;
+import org.hibernate.Query;
 
 	public class DatuBasea {
 	    private final static Logger log = Logger.getLogger(DatuBasea.class);
@@ -30,6 +31,28 @@ import datuak.HibernateUtil;
 //	    Konexioa itxi
 	    public void itxi() {
 	    	HibernateUtil.getSessionFactory().close();
+	    }
+	    
+//	    Datu basea garbitu
+	    public void garbitu(){
+	    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	    	session.beginTransaction();
+//	    	String sql_totala = 
+//	    			"DELETE FROM " +
+//	    			"FROM `db_acb`.`totala`;";
+//	    	String sql_partida = 
+//    			"DELETE FROM " +
+//    			"FROM `db_acb`.`partida`;";
+	    	
+	    	Query q1 = session.createQuery("delete from Totala");
+	    	Query q2 = session.createQuery("delete from Partida");
+	    	
+	    	q1.executeUpdate();
+	    	q2.executeUpdate();
+
+	    	session.getTransaction().commit();	    	
+	    	log.info("Datu basea garbituta");
+
 	    }
 	    
 	    

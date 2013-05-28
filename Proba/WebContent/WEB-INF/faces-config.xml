@@ -15,5 +15,10 @@
 		<managed-bean-class>gui.beans.ProgressBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>parser</managed-bean-name>
+		<managed-bean-class>parseatzailea.Parser</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

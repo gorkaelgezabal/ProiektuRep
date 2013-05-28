@@ -6,7 +6,7 @@
     <class name="datuak.Totala" table="totala" catalog="db_acb">
         <composite-id name="id" class="datuak.TotalaId">
             <key-property name="taldea" type="string">
-                <column name="taldea" length="10" />
+                <column name="taldea" length="50" />
             </key-property>
             <key-property name="partida" type="int">
                 <column name="partida" />

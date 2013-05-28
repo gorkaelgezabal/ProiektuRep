@@ -7,7 +7,7 @@ public class HibernateUtil {
 private static final SessionFactory sessionFactory;
 static {
 try {
-	sessionFactory = new Configuration().configure(new File("C:/iso2/workspace/HibernateProba2/src/hibernate.cfg.xml")).buildSessionFactory();
+	sessionFactory = new Configuration().configure(new File("C:/iso2/workspace/Proba/src/hibernate.cfg.xml")).buildSessionFactory();
 } catch (Throwable ex) {
 throw new ExceptionInInitializerError(ex);
 }
