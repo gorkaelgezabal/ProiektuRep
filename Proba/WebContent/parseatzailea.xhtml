@@ -12,8 +12,9 @@
 		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 		<title>Indizea</title>
-		<!-- 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/style.css" /> -->
-		<h:outputStylesheet library="css" name="style.css" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/css/style.css" />
+		<!-- 			<h:outputStylesheet library="css" name="style.css"  /> -->
 
 	</f:facet>
 
@@ -21,13 +22,11 @@
 
 <h:body>
 
-	<p:panel header="Info">
+	<p:panel header="Datu analisia">
 		<p:tabMenu activeIndex="0">
-			<p:menuitem value="1.-HTML Eskuraketa" url="/faces/indizea.xhtml"
-				icon="ui-icon-wrench" />  >  
-    	<p:menuitem value="2.-Datu-baseratu"
-				url="/faces/parseatzailea.xhtml" icon="ui-icon-document" />
-			<p:menuitem value="3.-Datu-analisia" url="/ui/tabMenuSupport.jsf"
+			<p:menuitem value="1.-Datu eskuraketa" url="/faces/indizea.xhtml"
+				icon="ui-icon-wrench" />   
+			<p:menuitem value="2.-Datu analisia" url="/faces/parseatzailea.xhtml"
 				icon="ui-icon-search" />
 		</p:tabMenu>
 		<p:fieldset legend="Deskribapena">

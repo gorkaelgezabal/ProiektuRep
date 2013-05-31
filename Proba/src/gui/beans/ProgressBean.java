@@ -19,7 +19,6 @@ public class ProgressBean implements Serializable {
 	ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
 	private String db_helbidea = context.getRealPath("LACB");
 	private String html;
-	private boolean disabled = true;
 	
     public Integer getProgress() {  
 
@@ -32,38 +31,41 @@ public class ProgressBean implements Serializable {
     				progress = 0;
     			}
     			else{
-
-    				int i=hasiera_denboraldia;
-    				int j=hasiera_partidua;
-
-        			try {
-    					html = Erauzlea.erauziHTML(i,j);
-    					Erauzlea.gordeHTML(html, db_helbidea, i, j);
-//    					progress = ((j+(i-35)*306)/6732)*100;
-    					progress = (i-34)*4;
-//    					System.out.println("progress"+((j+(i-35)*306)/6732)*100);
-    					
-    					hasiera_partidua = j+1;
-    					
-    					if(hasiera_partidua>2){
-
-//    					if(hasiera_partidua>306){
-    						hasiera_denboraldia=i+1;
-    						hasiera_partidua = 1;
-    					}
-    					
-    					
-    					
-    				} catch (IOException e) {
-    					// TODO Auto-generated catch block
-    					e.printStackTrace();
-    				}
-    				
-    				if (progress > 306){
-    					progress = 306;
-    				}
-    				
+        			if(progress<100){
+		    				int i=hasiera_denboraldia;
+		    				int j=hasiera_partidua;
+		
+		        			try {
+		        				if(progress!=0){
+		        					html = Erauzlea.erauziHTML(i,j);
+			    					Erauzlea.gordeHTML(html, db_helbidea, i, j);
+		        				}
+		//    					progress = ((j+(i-35)*306)/6732)*100;
+		    					progress = (i-34)*4;
+		//    					System.out.println("progress"+((j+(i-35)*306)/6732)*100);
+		    					
+		    					hasiera_partidua = j+1;
+		    					
+		    					if(hasiera_partidua>2){
+		
+		//    					if(hasiera_partidua>306){
+		    						hasiera_denboraldia=i+1;
+		    						hasiera_partidua = 1;
+		    					}
+		    					
+		    					
+		    					
+		    				} catch (IOException e) {
+		    					// TODO Auto-generated catch block
+		    					e.printStackTrace();
+		    				}
+		    				
+		    				if (progress > 100){
+		    					progress = 100;
+		    				}
+        			}		
     			}
+
     			return progress;
 
     }  
@@ -71,22 +73,14 @@ public class ProgressBean implements Serializable {
     public void setProgress(Integer progress) {  
         this.progress = progress;  
     }  
-      
 
-	public boolean isDisabled() {
-		return disabled;
-	}
-
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
-	}
 
 	public void onComplete() {  
-       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datuen eskuraketa burututa", "Itxaron datuak parseatu bitartean lanean hasi aurretik"));
+       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datuen eskuraketa burututa", "Parseaketa burutzeko prest, prozesuak minutu batzuk tarda ditzake."));
     }
     
     public void parseatu() {  
-        Parser.parseatu();
+        Parser.parseatu();   
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parseaketa burututa. Dena prest!", "Parseaketa burututa. Dena prest!"));
      }   
     

@@ -20,5 +20,15 @@
 		<managed-bean-class>parseatzailea.Parser</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>bean</managed-bean-name>
+		<managed-bean-class>gui.beans.Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>tabBean</managed-bean-name>
+		<managed-bean-class>gui.beans.TabBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

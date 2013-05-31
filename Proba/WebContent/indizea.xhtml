@@ -11,7 +11,7 @@
 	<f:facet name="first">
 		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-		<title>Indizea</title>
+		<title>ACB Ligako Datu analizatzailea</title>
 		<link type="text/css" rel="stylesheet"
 			href="#{request.contextPath}/resources/css/style.css" />
 		<!-- 			<h:outputStylesheet library="css" name="style.css"  /> -->
@@ -22,14 +22,12 @@
 
 <h:body>
 	<!-- <h:outputScript library="js" name="common.js" /> -->
-	<p:panel header="Info">
+	<p:panel header="Datu eskuraketa">
 		<h:form>
 			<p:tabMenu activeIndex="0">
-				<p:menuitem value="1.-HTML Eskuraketa" url="/ui/tabMenu.jsf"
-					icon="ui-icon-wrench" />  >  
-    	<p:menuitem value="2.-Datu-baseratu"
-					url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document" />
-				<p:menuitem value="3.-Datu-analisia" url="/ui/tabMenuSupport.jsf"
+				<p:menuitem value="1.-Datu eskuraketa" url="/faces/indizea.xhtml"
+					icon="ui-icon-wrench" /> 
+				<p:menuitem value="2.-Datu analisia" url="/faces/parseatzailea.xhtml" 
 					icon="ui-icon-search" />
 			</p:tabMenu>
 			<p:fieldset legend="Ongietorri">
@@ -46,28 +44,34 @@
 
 			<p:growl id="growl" />
 			<h3>Deskarga</h3>
-			<p:messages id="messages" showDetail="true" autoUpdate="true"
-				closable="true" />
+			<p:messages id="messages" showDetail="true" autoUpdate="true" />
+			<br/>
 			<p:commandButton value="Start" type="button"
 				onclick="pbAjax.start();startButton2.disable();"
 				widgetVar="startButton2" />
 			<p:commandButton value="Cancel"
 				actionListener="#{progressBean.cancel}"
 				oncomplete="pbAjax.cancel();startButton2.enable();" />
-
+			
+			<p:separator id="separator3" />
+			
 			<p:progressBar widgetVar="pbAjax" ajax="true" 
 				value="#{progressBean.progress}" labelTemplate="{value}%"
-				styleClass="animated" interval="250">
+				styleClass="animated" interval="300">
 				<p:ajax event="complete" listener="#{progressBean.onComplete}"
 					update="messages"
-					oncomplete="startButton2.enable();#{progressBean.setDisabled(false)};"/>
+					oncomplete="startButton2.enable();remoteEnable();"/>
 			</p:progressBar>
-
+			
+			<p:remoteCommand name="remoteEnable" update="parserButton">  
+        		<f:setPropertyActionListener value="#{false}"  target="#{bean.disable}" />  
+   			 </p:remoteCommand>
+   			 
 
 			<p:separator id="separator2" />
 
-			<p:commandButton value="Parseatu" widgetVar="parserButton"
-				disabled="#{progressBean.disabled}" actionListener="#{progressBean.parseatu()}"
+			<p:commandButton value="Parseatu" widgetVar="parserButton" id="parserButton" 
+				disabled="#{bean.disable}" actionListener="#{progressBean.parseatu()}" 
 				update="growl" />
 
 		</h:form>
