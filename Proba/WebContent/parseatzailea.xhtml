@@ -33,13 +33,17 @@
 			<h:panelGrid columns="2" cellpadding="10">
 
 				<h:outputText
-					value="Hurrengo pauso honetan aurretik aipatu bezala, erbailgarriak ez diren datuak ezabatzeari ekingo diogu. Horrez gain formatu estandar batean gordeko dira." />
+					value="Aukeratu sorrtu nahi duzun fitxategi mota." />
 			</h:panelGrid>
 		</p:fieldset>
 		<p:separator id="separator" />
 
 		<h:form>
-			<p:commandButton action="#{parser.parseatu()}" value="Parseatu"
+			<p:commandButton value="Arff" ajax="false" icon="ui-icon-arrowthichk-s">
+				<p:fileDownload value="#{arffBean.sortu()}" />
+			</p:commandButton>
+			
+			<p:commandButton action="#{csv.Sortu()}" value="CSV" icon="ui-icon-arrowthichk-s"
 				ajax="false"></p:commandButton>
 		</h:form>
 

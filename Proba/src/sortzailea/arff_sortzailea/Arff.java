@@ -5,18 +5,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 public class Arff {
 
-		public void Sortu (String irteera){           
+		public void Sortu (String helbidea){           
 			try {
+
+				
 				datuak.DatuBasea db = new datuak.DatuBasea();
 				db.ireki();
 							
 				//Fitxategia sortu
 				FileWriter arff = null;
 	            PrintWriter pw = null;
-				arff = new FileWriter(irteera+"/LACB.arff");
+//				arff = new FileWriter(irteera+"/LACB.arff");
+	            System.out.println(helbidea);
+	            arff = new FileWriter(helbidea);
 				pw = new PrintWriter(arff);
 				
 				//Goiburukoa
@@ -84,7 +90,10 @@ public class Arff {
 		    	 idatzi(pw,denb_kodea);//denb_kodea		    	 
 		    	 idatzi(pw,part_kodea);//part_kodea
 		    	 
+		    	 
 		    	 String data_osoa = errenkada[1].toString();
+		    	 System.out.println(data_osoa);
+		    	 System.out.println(kode_osoa);
 		    	 String data = data_osoa.substring(0,11);
 		    	 String ordua = data_osoa.substring(11,data_osoa.length());
 		    	 
@@ -124,6 +133,8 @@ public class Arff {
 		    	 }
 		    	 
 		      }
+		      
+		      System.out.println("FITXATEGIA SORTUTA!!!");
 		      pw.close();
 		      db.itxi();
 			} catch (IOException e) {

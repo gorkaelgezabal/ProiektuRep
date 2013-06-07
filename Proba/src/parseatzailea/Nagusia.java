@@ -26,10 +26,10 @@ public class Nagusia {
 //		List<datuak.Partida> partida_lista = Parser.parseatu(helbidea);
 		
 /*######################### ARFF FITXATEGIA SORTU #####################################*/
-		System.out.println("proba");
-		Arff arff = new Arff();
-		arff.Sortu(irteera_arff);
-		System.out.println("#######ARFF SORTUTA#####");
+//		System.out.println("proba");
+//		Arff arff = new Arff();
+//		arff.Sortu(irteera_arff);
+//		System.out.println("#######ARFF SORTUTA#####");
 ////		
 /*############################CSV FITXATEGIA SORTU ####################################*/
 		//Csv csv = new Csv();

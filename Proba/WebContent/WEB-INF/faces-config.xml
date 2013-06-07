@@ -30,5 +30,10 @@
 		<managed-bean-class>gui.beans.TabBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>arffBean</managed-bean-name>
+		<managed-bean-class>gui.beans.ArffBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
