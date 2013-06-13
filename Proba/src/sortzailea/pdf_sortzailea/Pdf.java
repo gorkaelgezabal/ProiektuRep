@@ -96,7 +96,9 @@ public class Pdf {
 //	        	Dokumentua sortu
 	        	Document document = new Document();		        
 	        	Iterator it = talde_datuak.iterator();
-				PdfWriter.getInstance(document, new FileOutputStream(irteera+"DataKontsulta"+talde_id+hasiera_data+bukaera_data+".pdf"));			
+//				PdfWriter.getInstance(document, new FileOutputStream(irteera+"DataKontsulta"+talde_id+hasiera_data+bukaera_data+".pdf"));		
+				PdfWriter.getInstance(document, new FileOutputStream(irteera+"DataKontsulta"+talde_id+".pdf"));			
+
 		        document.open();
 		        document.addTitle("Kontsulta");
 		        document.addAuthor("Gorka Elgezabal");

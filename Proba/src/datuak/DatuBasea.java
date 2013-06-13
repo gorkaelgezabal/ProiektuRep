@@ -6,9 +6,12 @@ import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 	import org.apache.log4j.Level;
 	import org.apache.log4j.Logger;
+import org.hibernate.SQLQuery;
 	import org.hibernate.Session;
 import datuak.HibernateUtil;
 import org.hibernate.Query;
+
+import com.sun.xml.internal.bind.v2.runtime.reflect.ListIterator;
 
 	public class DatuBasea {
 	    private final static Logger log = Logger.getLogger(DatuBasea.class);
@@ -155,22 +158,28 @@ import org.hibernate.Query;
 	    	try{
 	    		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		    	session.beginTransaction();
-		    	
 		    	String sql = 
 		    			"SELECT * INTO OUTFILE '"+helbidea+"table.csv' FIELDS TERMINATED BY ','" +
 		    			" OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' " +
 		    			"FROM partida INNER JOIN totala ON partida_kodea = partida";
 		    	
-		    	session.createSQLQuery(sql).list();
+		    	List q = session.createSQLQuery(sql).list();
+//		    	System.out.println("###########"+q.size());
+		        
 		    	session.getTransaction().commit();
 		    	log.info("Aurkari kontsulta burututa");
 	    	}
 	    	catch(Exception ex){
 	    		
 	    	}
-	    	
-	    	
-	    	
+	    }
+	    
+	    public List<String> lortuDenboraldiak (){
+	    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	    	session.beginTransaction();
+	    	String sql = "select distinct substring(partida_kodea, 1, 2) + 1955 from partida";
+	    	List emaitza = session.createSQLQuery(sql).list();
+	    	return emaitza;
 	    	
 	    }
 	    

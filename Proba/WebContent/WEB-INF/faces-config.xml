@@ -35,5 +35,15 @@
 		<managed-bean-class>gui.beans.ArffBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>csvBean</managed-bean-name>
+		<managed-bean-class>gui.beans.CsvBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pdfBean</managed-bean-name>
+		<managed-bean-class>gui.beans.PdfBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

@@ -7,9 +7,9 @@ import javax.faces.context.FacesContext;
 
 public class Csv {
 			
-		public void Sortu (){
+		public void Sortu (String helbidea){
 //			ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
-			String helbidea ="c:/Windows/Temp/";
+
 			File fileTemp = new File(helbidea+"table.csv");
 			if (fileTemp.exists()){
 			    fileTemp.delete();
