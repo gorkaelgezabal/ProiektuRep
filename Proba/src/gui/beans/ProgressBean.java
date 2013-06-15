@@ -14,14 +14,22 @@ import html_erauzlea.Erauzlea;
 public class ProgressBean implements Serializable {  
   
     private Integer progress;  
-	private static int hasiera_denboraldia = 35;
-	private static int hasiera_partidua = 1;
-	ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
-	private String db_helbidea = context.getRealPath("LACB");
+	private static int hasiera_denboraldia;// = 35;
+	private static int hasiera_partidua; //= 1;
+//	private ExternalContext context=FacesContext.getCurrentInstance().getExternalContext();
+//	private String db_helbidea = context.getRealPath("LACB");
+//	private ExternalContext context;
+//	private String db_helbidea;
 	private String html;
 	
+	public ProgressBean(){
+		this.hasiera_denboraldia = 35;
+		this.hasiera_partidua = 1;
+	}
+	
     public Integer getProgress() {  
-
+    	 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+    	 String db_helbidea = context.getRealPath("LACB");
     		System.out.println("denboraldia"+hasiera_denboraldia);
     		System.out.println("partida"+hasiera_partidua);
     		System.out.println("progress"+progress);
