@@ -1,23 +1,21 @@
 
     function start() {  
-        startButton1.disable();  
         window['progress'] = setInterval(function() {  
-            var oldValue = pbClient.getValue(),  
-            newValue = oldValue + 10;  
+        	var elem = document.getElementsByClassName("ui-progressbar-label");
+        	var progValue = document.getElementsByClassName("ui-progressbar-value ui-widget-header ui-corner-all");
+        	prog = elem[0].childNodes[0].nodeValue;
+        	value = prog
+//        	alert(progValue);
+        	progValue[0].style.width = prog;
+
   
-            pbClient.setValue(pbClient.getValue() + 10);  
-  
-            if(newValue == 100) {  
-                clearInterval(window['progress']);  
-            }  
-  
-  
-        }, 1000);  
+        }, 400);  
     }  
   
     function cancel() {  
+    	var elem = document.getElementsByClassName("animated");
         clearInterval(window['progress']);  
-        pbClient.setValue(0);  
+        elem.setValue(0);  
         startButton1.enable();  
     }  
  

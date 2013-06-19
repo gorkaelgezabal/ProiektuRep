@@ -56,7 +56,7 @@ public class ProgressBean implements Serializable {
 		    					
 		    					if(hasiera_partidua>2){
 		
-		//    					if(hasiera_partidua>306){
+//		    					if(hasiera_partidua>306){
 		    						hasiera_denboraldia=i+1;
 		    						hasiera_partidua = 1;
 		    					}

@@ -47,6 +47,7 @@ public class Parser {
 				Document dokumentua = lortuDokumentua(helbidea,fitxategiak,i);
 				Elements boxscorea = lortuBoxScorea(dokumentua);
 				Elements titulua = lortuPartidaTitulua(dokumentua);
+				boolean formatuBerria = isNew(dokumentua);
 				Elements errenkadak = boxscorea.get(1).select("tr");
 				
 				for(Element tr : errenkadak){
@@ -69,7 +70,7 @@ public class Parser {
 					partida.setData(partida_data);
 					partida.setPertsonaKop(pertsona_kopurua);
 					Element talde_datuak = boxscorea.get(1);
-					aurkariak = lortuAurkarienDatuak(talde_datuak, titulua, partida.getPartidaKodea());					
+					aurkariak = lortuAurkarienDatuak(talde_datuak, titulua, partida.getPartidaKodea(),formatuBerria);					
 					
 					aurkariak.get(0).setPartida(partida);
 					aurkariak.get(1).setPartida(partida);
@@ -91,6 +92,7 @@ public class Parser {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -104,6 +106,16 @@ public class Parser {
 		}
 		
 		return taulak;
+	}
+	
+	private static boolean isNew (Document doc) {
+		Elements taula_new = doc.select("[class=estadisticasnew]");
+		if(taula_new.size()==0){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 	
 	private static Elements lortuPartidaTitulua(Document doc) throws IOException{
@@ -175,7 +187,7 @@ public class Parser {
 		}
 	}
 		
-	private static List<datuak.Totala> lortuAurkarienDatuak (Element talde_datuak, Elements titulua, Integer partida_kodea){
+	private static List<datuak.Totala> lortuAurkarienDatuak (Element talde_datuak, Elements titulua, Integer partida_kodea, boolean formatuBerria){
 		int kont = 1;
 		Elements errenkadak = talde_datuak.select("tr");
 		datuak.Totala talde1 = null;
@@ -184,7 +196,7 @@ public class Parser {
 			if(tr.select("td").first().text().equals("Total")){//baliozkoa den konprobatzen da
 				if(kont == 1){//lehen taldean kokatzen gara
 					Elements talde1_datuak = tr.select("td");						
-					talde1 = sortuTaldea(talde1_datuak);
+					talde1 = sortuTaldea(talde1_datuak,formatuBerria);
 					String izena = titulua.select("td").get(0).text();
 					
 					//Taldeen izenetan diren ikur bereziak kentzen dira, tildeak esaterako
@@ -197,7 +209,7 @@ public class Parser {
 				}
 				else{//bigarren taldean kokatzen gara
 					Elements talde2_datuak = tr.select("td");						
-					talde2 = sortuTaldea(talde2_datuak);
+					talde2 = sortuTaldea(talde2_datuak,formatuBerria);
 					datuak.TotalaId identifikadorea2 = new datuak.TotalaId();
 					String izena = titulua.select("td").get(1).text();
 					//Taldeen izenetan diren ikur bereziak kentzen dira, tildeak esaterako
@@ -216,7 +228,7 @@ public class Parser {
 		return aurkariak;
 	}
 	
-	private static datuak.Totala sortuTaldea(Elements talde_datuak){
+	private static datuak.Totala sortuTaldea(Elements talde_datuak, boolean formatuBerria){
 		
 		datuak.Totala taldea = new datuak.Totala();
 		taldea.setPuntuak(Integer.parseInt(talde_datuak.get(2).text()));
@@ -246,7 +258,12 @@ public class Parser {
 		taldea.setMateak(Integer.parseInt(talde_datuak.get(17).text()));
 		taldea.setFpAld(Integer.parseInt(talde_datuak.get(18).text()));
 		taldea.setFpKont(Integer.parseInt(talde_datuak.get(19).text()));
-		taldea.setBalorazioa(Integer.parseInt(talde_datuak.get(20).text()));
+		if(formatuBerria){
+			taldea.setBalorazioa(Integer.parseInt(talde_datuak.get(21).text()));
+		}else{
+			taldea.setBalorazioa(Integer.parseInt(talde_datuak.get(20).text()));
+		}
+		
 		
 		return taldea;
 		

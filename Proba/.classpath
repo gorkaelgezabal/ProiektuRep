@@ -24,6 +24,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSoup"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySQL"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JSTL"/>
+	<classpathentry kind="lib" path="C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/Theme/black-tie-1.0.10.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/primefaces-3.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

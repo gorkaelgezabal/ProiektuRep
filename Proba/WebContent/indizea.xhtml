@@ -21,7 +21,7 @@
 </h:head>
 
 <h:body>
-	<!-- <h:outputScript library="js" name="common.js" /> -->
+	<h:outputScript library="js" name="common.js" />
 	<p:panel header="Datu eskuraketa">
 		<h:form>
 			<p:tabMenu activeIndex="0">
@@ -47,7 +47,7 @@
 			<p:messages id="messages" showDetail="true" autoUpdate="true" />
 			<br/>
 			<p:commandButton value="Start" type="button"
-				onclick="pbAjax.start();startButton2.disable();"
+				onclick="pbAjax.start();startButton2.disable();start();"
 				widgetVar="startButton2" />
 			<p:commandButton value="Cancel"
 				actionListener="#{progressBean.cancel}"
@@ -55,12 +55,10 @@
 			
 			<p:separator id="separator3" />
 			
-			<p:progressBar widgetVar="pbAjax" ajax="true" 
-				value="#{progressBean.progress}" labelTemplate="{value}%"
-				styleClass="animated" interval="300">
-				<p:ajax event="complete" listener="#{progressBean.onComplete}"
-					update="messages"
+			<p:progressBar widgetVar="pbAjax" id = "pbClient" ajax="true" value="#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated" interval="300" disabled="false">
+				<p:ajax event="complete" listener="#{progressBean.onComplete}" update="messages"
 					oncomplete="startButton2.enable();remoteEnable();"/>
+
 			</p:progressBar>
 			
 			<p:remoteCommand name="remoteEnable" update="parserButton">  
