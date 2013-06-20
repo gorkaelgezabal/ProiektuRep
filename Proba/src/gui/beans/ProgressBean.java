@@ -84,12 +84,13 @@ public class ProgressBean implements Serializable {
 
 
 	public void onComplete() {  
-       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datuen eskuraketa burututa", "Parseaketa burutzeko prest, prozesuak minutu batzuk tarda ditzake."));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datuen eskuraketa burututa", "Parseaketa burutzeko prest, prozesuak minutu batzuk tarda ditzake."));
     }
     
     public void parseatu() {  
         Parser.parseatu();   
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parseaketa burututa. Dena prest!", "Parseaketa burututa. Dena prest!"));
+        
+FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parseaketa burututa.", "Datuak ongi gorde dira"));
      }   
     
       

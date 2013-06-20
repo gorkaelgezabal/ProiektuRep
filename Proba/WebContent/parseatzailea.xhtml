@@ -22,7 +22,7 @@
 </h:head>
 
 <h:body>
-
+	<h:outputScript library="js" name="common.js" />
 	<p:panel header="Datu analisia">
 		<p:tabMenu activeIndex="1">
 			<p:menuitem value="1.-Datu eskuraketa" url="/faces/indizea.xhtml"
@@ -30,53 +30,63 @@
 			<p:menuitem value="2.-Datu analisia" url="/faces/parseatzailea.xhtml"
 				icon="ui-icon-search" />
 		</p:tabMenu>
-		<p:fieldset legend="Deskribapena">
+		<br/>
+		<p:fieldset legend="Aukerak">
 			<h:panelGrid columns="2" cellpadding="10">
 
 				<h:outputText
-					value="Aukeratu sorrtu nahi duzun fitxategi mota." />
+					value="Aukeratu sortu nahi duzun fitxategi mota." />
 			</h:panelGrid>
-		</p:fieldset>
-		<p:separator id="separator" />
-
-		<h:form>
-			<p:commandButton value="Arff" ajax="false" icon="ui-icon-arrowthichk-s">
-				<p:fileDownload value="#{arffBean.sortu()}" />
-			</p:commandButton>
+			<p:separator id="separator" />
 			
-			<p:commandButton  value="CSV" icon="ui-icon-arrowthichk-s" ajax="false">
-					<p:fileDownload value="#{csvBean.sortu()}" />
-			</p:commandButton>
-		
-		</h:form>
-		
+			<h:form>
+				<h3>ARFF fitxategia:</h3>
+				<p:commandButton value="Arff" ajax="false" icon="ui-icon-arrowthickstop-1-s" >
+					<p:fileDownload value="#{arffBean.sortu()}" />
+				</p:commandButton>
+				
+				<h3>CSV fitxategia:</h3>
+				<p:commandButton  value="CSV" icon="ui-icon-arrowthickstop-1-s" ajax="false" >
+						<p:fileDownload value="#{csvBean.sortu()}" />
+				</p:commandButton>
+			</h:form>
+			
+			<p:separator id="separator2" />
 		<h:form>
 			<h3>Hasiera data</h3>  
-	    	<p:calendar value="#{pdfBean.hasiera_data}" mode="popup" showOn="button"/>
+	    	<p:calendar value="#{pdfBean.hasiera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu"/>
 	    	<h3>Bukaera data</h3>  
-	    	<p:calendar value="#{pdfBean.bukaera_data}" mode="popup" showOn="button"/>
+	    	<p:calendar value="#{pdfBean.bukaera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu"/>
 
+			<h3>Denboraldia:</h3>
 			<p:selectOneMenu value="#{pdfBean.denboraldia}"	>
 				<f:selectItem itemLabel="Aukeratu bat" itemValue="" />
 				<c:forEach items="#{pdfBean.denboraldiak}" var="denbId" varStatus="loop">
     				<f:selectItem itemValue="#{denbId}" itemLabel="#{pdfBean.denboraldiak[loop.index]}" />
 				</c:forEach>
 			</p:selectOneMenu>
+			<h3>Taldea:</h3>
 			<p:selectOneMenu value="#{pdfBean.taldea}"	>
 				<f:selectItem itemLabel="Aukeratu bat" itemValue="" />
 				<c:forEach items="#{pdfBean.taldeak}" var="taldId" varStatus="loop">
     				<f:selectItem itemValue="#{taldId}" itemLabel="#{pdfBean.taldeak[loop.index]}" />
 				</c:forEach>
 			</p:selectOneMenu>
-			
-			<p:commandButton  value="Denboraldi agiria" icon="ui-icon-arrowthichk-s" ajax="false">
+			<br/><br/>
+			<p:commandButton  value="Denboraldi agiria" icon="ui-icon-arrowthickstop-1-s" ajax="false">
 					<p:fileDownload value="#{pdfBean.sortuDenbAgiria()}" />
 			</p:commandButton>
 			
-			<p:commandButton  value="Data agiria" icon="ui-icon-arrowthichk-s" ajax="false">
+			<p:commandButton  value="Data agiria" icon="ui-icon-arrowthickstop-1-s" ajax="false">
 					<p:fileDownload value="#{pdfBean.sortuDataAgiria()}" />
 			</p:commandButton>
 		</h:form>
+			
+		</p:fieldset>
+		
+
+		
+		
 
 
 	</p:panel>

@@ -23,40 +23,40 @@
 <h:body>
 	<h:outputScript library="js" name="common.js" />
 	<p:panel header="Datu eskuraketa">
-		<h:form>
+		
+		
 			<p:tabMenu activeIndex="0">
 				<p:menuitem value="1.-Datu eskuraketa" url="/faces/indizea.xhtml"
 					icon="ui-icon-wrench" /> 
 				<p:menuitem value="2.-Datu analisia" url="/faces/parseatzailea.xhtml" 
 					icon="ui-icon-search" />
 			</p:tabMenu>
-			<p:fieldset legend="Ongietorri">
-				<h:panelGrid columns="2" cellpadding="10">
-
+			<br/>
+			<p:fieldset legend="Aukerak">
 					<h:outputText
 						value="Ongietorri datuen ACBko datu analizatzailera. Begi bistako den moduan, datu analisia burutzeko hiru pauso jarraitu behar ditugu. 
             Lehenik analisirako erabiliko dugun datu multzoa eskuratuko dugu. Ondoren datu multzoa birfinduko da, datuak formatu egokian datu-baseratuz eta alferrikako datuak ezabatuz. Hau eginda prest gaude, 
             behar ditugun fitxategi eta dokumentuak sorrarazteko gure analisirako." />
-				</h:panelGrid>
-			</p:fieldset>
+			
+			<h:form>
 			<p:separator id="separator" />
 
-
+	
 			<p:growl id="growl" />
 			<h3>Deskarga</h3>
 			<p:messages id="messages" showDetail="true" autoUpdate="true" />
 			<br/>
-			<p:commandButton value="Start" type="button"
+			<p:commandButton value="Hasi" type="button" icon="ui-icon-play"
 				onclick="pbAjax.start();startButton2.disable();start();"
 				widgetVar="startButton2" />
-			<p:commandButton value="Cancel"
+			<p:commandButton value="Gelditu" icon="ui-icon-pause"
 				actionListener="#{progressBean.cancel}"
 				oncomplete="pbAjax.cancel();startButton2.enable();" />
 			
 			<p:separator id="separator3" />
 			
 			<p:progressBar widgetVar="pbAjax" id = "pbClient" ajax="true" value="#{progressBean.progress}" labelTemplate="{value}%" styleClass="animated" interval="300" disabled="false">
-				<p:ajax event="complete" listener="#{progressBean.onComplete}" update="messages"
+				<p:ajax event="complete" listener="#{progressBean.onComplete}" update="growl"
 					oncomplete="startButton2.enable();remoteEnable();"/>
 
 			</p:progressBar>
@@ -68,11 +68,18 @@
 
 			<p:separator id="separator2" />
 
-			<p:commandButton value="Parseatu" widgetVar="parserButton" id="parserButton" 
+			<p:commandButton value="Parseatu" widgetVar="parserButton" id="parserButton" icon="ui-icon-gear" onclick="parseStart();" oncomplete="parseStop();"
 				disabled="#{bean.disable}" actionListener="#{progressBean.parseatu()}" 
-				update="growl" />
+				update="messages" />
 
 		</h:form>
+			</p:fieldset>
+
+		
+			
+			
+
+				<h:graphicImage value="/resources/images/239.gif" style="width:128px;height:128px;position:fixed;right:5px;bottom:5px;visibility:hidden" styleClass="load" ></h:graphicImage>
 
 
 	</p:panel>
