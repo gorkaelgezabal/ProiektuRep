@@ -15,7 +15,6 @@
 		<title>Indizea</title>
 		<link type="text/css" rel="stylesheet"
 			href="#{request.contextPath}/resources/css/style.css" />
-		<!-- 			<h:outputStylesheet library="css" name="style.css"  /> -->
 
 	</f:facet>
 
@@ -54,9 +53,9 @@
 			<p:separator id="separator2" />
 		<h:form>
 			<h3>Hasiera data</h3>  
-	    	<p:calendar value="#{pdfBean.hasiera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu"/>
+	    	<p:calendar value="#{pdfBean.hasiera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu" readonlyInput="true" mindate="1990/09/19" maxdate="#{pdfBean.bukaera_data}"/>
 	    	<h3>Bukaera data</h3>  
-	    	<p:calendar value="#{pdfBean.bukaera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu"/>
+	    	<p:calendar value="#{pdfBean.bukaera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu" readonlyInput="true" mindate="1990/09/19" maxdate="#{pdfBean.bukaera_data}"/>
 
 			<h3>Denboraldia:</h3>
 			<p:selectOneMenu value="#{pdfBean.denboraldia}"	>
