@@ -55,6 +55,7 @@
 			        pw.println("@ATTRIBUTE  tap_ald NUMERIC");
 			        pw.println("@ATTRIBUTE  tap_kont NUMERIC");
 			        pw.println("@ATTRIBUTE  mateak NUMERIC");
+			        pw.println("@ATTRIBUTE  fp_ald NUMERIC");
 			        pw.println("@ATTRIBUTE  fp_kont NUMERIC");
 			        pw.println("@ATTRIBUTE  balorazioa NUMERIC");
 	
