@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<title>ACB Ligako Datu analizatzailea</title>
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/css/style.css" />
+		<!-- 			<h:outputStylesheet library="css" name="style.css"  /> -->
+
+	</f:facet>
+
+</h:head>
+
+<h:body>
+	<h:outputScript library="js" name="common.js" />
+	<p:panel header="ACB Ligako Datuen Analisirako Aplikazioa">
+
+
+		<p:tabMenu activeIndex="0">
+			<p:menuitem value="1.-Datu eskuraketa" url="/faces/indizea.xhtml"
+				icon="ui-icon-wrench" />
+			<p:menuitem value="2.-Datu analisia" url="/faces/parseatzailea.xhtml"
+				icon="ui-icon-search" />
+		</p:tabMenu>
+		<br />
+		<p:fieldset legend="Aukerak">
+			<h:outputText
+				value="Ongietorri datuen ACBko datu analizatzailera. Begi bistako den moduan, datu analisia burutzeko hiru pauso jarraitu behar ditugu. 
+            Lehenik analisirako erabiliko dugun datu multzoa eskuratuko dugu. Ondoren datu multzoa birfinduko da, datuak formatu egokian datu-baseratuz eta alferrikako datuak ezabatuz. Hau eginda prest gaude, 
+            behar ditugun fitxategi eta dokumentuak sorrarazteko gure analisirako." />
+
+			<h:form>
+				<p:separator id="separator" />
+
+
+				<p:growl id="growl" />
+				<h3>Deskarga</h3>
+				<p:messages id="messages" showDetail="true" autoUpdate="true" />
+				<br />
+				<p:commandButton value="Hasi" type="button" icon="ui-icon-play"
+					onclick="pbAjax.start();startButton2.disable();start();"
+					widgetVar="startButton2" />
+				<p:commandButton value="Gelditu" icon="ui-icon-pause"
+					actionListener="#{progressBean.cancel}"
+					oncomplete="pbAjax.cancel();startButton2.enable();" />
+
+				<p:separator id="separator3" />
+
+				<p:progressBar widgetVar="pbAjax" id="pbClient" ajax="true"
+					value="#{progressBean.progress}" labelTemplate="{value}%"
+					styleClass="animated" interval="300" disabled="false">
+					<p:ajax event="complete" listener="#{progressBean.onComplete}"
+						update="growl" oncomplete="startButton2.enable();remoteEnable();" />
+
+				</p:progressBar>
+
+				<p:remoteCommand name="remoteEnable" update="parserButton">
+					<f:setPropertyActionListener value="#{false}"
+						target="#{bean.disable}" />
+				</p:remoteCommand>
+
+
+				<p:separator id="separator2" />
+
+				<p:commandButton value="Parseatu" widgetVar="parserButton"
+					id="parserButton" icon="ui-icon-gear" onclick="parseStart();"
+					oncomplete="parseStop();" disabled="#{bean.disable}"
+					actionListener="#{progressBean.parseatu()}" update="messages" />
+
+			</h:form>
+		</p:fieldset>
+
+
+
+
+
+		<h:graphicImage value="/resources/images/239.gif"
+			style="width:128px;height:128px;position:fixed;right:5px;bottom:5px;visibility:hidden"
+			styleClass="load"></h:graphicImage>
+
+
+	</p:panel>
+
+</h:body>
+</html>

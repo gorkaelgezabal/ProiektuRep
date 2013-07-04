@@ -1,0 +1,9 @@
+
+.animated.ui-progressbar-value {
+   background-image: url("http://www.primefaces.org/showcase/images/pbar-ani.gif") !important;
+    
+}
+.ui-widget, .ui-widget .ui-widget {
+				font-size: 90% !important;
+}
+            

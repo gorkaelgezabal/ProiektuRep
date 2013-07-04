@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<title>Indizea</title>
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/css/style.css" />
+
+	</f:facet>
+
+</h:head>
+
+<h:body>
+	<h:outputScript library="js" name="common.js" />
+	<p:panel header="ACB Ligako Datuen Analisirako Aplikazioa">
+		<p:tabMenu activeIndex="1">
+			<p:menuitem value="1.-Datu eskuraketa" url="/faces/indizea.xhtml"
+				icon="ui-icon-wrench" />   
+			<p:menuitem value="2.-Datu analisia" url="/faces/parseatzailea.xhtml"
+				icon="ui-icon-search" />
+		</p:tabMenu>
+		<br/>
+		<p:fieldset legend="Aukerak">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputText
+					value="Aukeratu sortu nahi duzun fitxategi mota." />
+			</h:panelGrid>
+			<p:separator id="separator" />
+			
+			<h:form>
+				<h3>ARFF fitxategia:</h3>
+				<p:commandButton value="Arff" ajax="false" icon="ui-icon-arrowthickstop-1-s" >
+					<p:fileDownload value="#{arffBean.sortu()}" />
+				</p:commandButton>
+				
+				<h3>CSV fitxategia:</h3>
+				<p:commandButton  value="CSV" icon="ui-icon-arrowthickstop-1-s" ajax="false" >
+						<p:fileDownload value="#{csvBean.sortu()}" />
+				</p:commandButton>
+			</h:form>
+			
+			<p:separator id="separator2" />
+		<h:form>
+			<h3>Hasiera data</h3>  
+	    	<p:calendar value="#{pdfBean.hasiera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu" readonlyInput="true" mindate="1990/09/19" maxdate="#{pdfBean.bukaera_data}"/>
+	    	<h3>Bukaera data</h3>  
+	    	<p:calendar value="#{pdfBean.bukaera_data}" mode="popup" showOn="button" pattern="yyyy/MM/dd" pages="2" effect="fadeIn" navigator="true" locale="eu" readonlyInput="true" mindate="1990/09/19" maxdate="#{pdfBean.bukaera_data}"/>
+
+			<h3>Denboraldia:</h3>
+			<p:selectOneMenu value="#{pdfBean.denboraldia}"	>
+				<f:selectItem itemLabel="Aukeratu bat" itemValue="" />
+				<c:forEach items="#{pdfBean.denboraldiak}" var="denbId" varStatus="loop">
+    				<f:selectItem itemValue="#{denbId}" itemLabel="#{pdfBean.denboraldiak[loop.index]}" />
+				</c:forEach>
+			</p:selectOneMenu>
+			<h3>Taldea:</h3>
+			<p:selectOneMenu value="#{pdfBean.taldea}"	>
+				<f:selectItem itemLabel="Aukeratu bat" itemValue="" />
+				<c:forEach items="#{pdfBean.taldeak}" var="taldId" varStatus="loop">
+    				<f:selectItem itemValue="#{taldId}" itemLabel="#{pdfBean.taldeak[loop.index]}" />
+				</c:forEach>
+			</p:selectOneMenu>
+			<br/><br/>
+			<p:commandButton  value="Denboraldi agiria" icon="ui-icon-arrowthickstop-1-s" ajax="false">
+					<p:fileDownload value="#{pdfBean.sortuDenbAgiria()}" />
+			</p:commandButton>
+			
+			<p:commandButton  value="Data agiria" icon="ui-icon-arrowthickstop-1-s" ajax="false">
+					<p:fileDownload value="#{pdfBean.sortuDataAgiria()}" />
+			</p:commandButton>
+		</h:form>
+			
+		</p:fieldset>
+		
+
+		
+		
+
+
+	</p:panel>
+
+</h:body>
+</html>
