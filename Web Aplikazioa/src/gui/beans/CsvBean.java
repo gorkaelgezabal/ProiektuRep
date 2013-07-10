@@ -15,9 +15,15 @@ public class CsvBean {
 		
 //		MySQL-ek ez ditu onartzen patherako Windows-ek erabiltzen duen \. Unix sistema baten kasuan bere horretan geratuko litzateke
 		helbidea = helbidea.replace("\\", "/");
+		
+//		Sistema eragilearen arabera, helbidearen amaieran  '/' ager daiteke edo ez.
+		char slash = helbidea.charAt(helbidea.length()-1);
+		if (slash != '/'){
+			helbidea = helbidea+"/";
+		}
+		
 		Csv sortzailea = new Csv();
 		sortzailea.Sortu(helbidea);
-		System.out.println("#########");
 		try {
 			InputStream stream = new FileInputStream(helbidea+"table.csv");
 			StreamedContent file = new DefaultStreamedContent(stream, "text/csv", "LACB.csv");

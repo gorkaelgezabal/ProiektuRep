@@ -3,11 +3,10 @@ package gui.beans;
 
 import java.io.IOException;
 import java.io.Serializable;  
-
+import java.util.Calendar;
 import javax.faces.application.FacesMessage;  
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext; 
-
 import parseatzailea.Parser;
 import html_erauzlea.Erauzlea;
 
@@ -27,10 +26,18 @@ public class ProgressBean implements Serializable {
 	public Integer getProgress() {  
 		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		String db_helbidea = context.getRealPath("LACB");
+		
 		System.out.println("denboraldia"+hasiera_denboraldia);
 		System.out.println("partida"+hasiera_partidua);
 		System.out.println(db_helbidea);
+		
+//		Denboraldi bakoitzaren artean dagoen portzentaje tartea kalkulatzen da.
+		int unekoUrtea = Calendar.getInstance().get(Calendar.YEAR);
+		int unekoUrtearenKodea = unekoUrtea - 1955;
+		int denboraldiKopurua = unekoUrtearenKodea - 35;
+		int tartea = 100/denboraldiKopurua;
 
+//		Hasieran progresua null da
 		if(progress == null){
 
 			progress = 0;
@@ -47,11 +54,12 @@ public class ProgressBean implements Serializable {
 						hasiera_partidua = j+1;
 					}
 					
-					//Ez du onartzen zehaztasun maila handiagorik
-					progress = (i-34)*4;
+					//Ez du onartzen zehaztasun maila handiagorik. Hori dela eta denboraldi bakoitzarentzat totalaren zein portzentajeri dagokion kalkulatzen da
+					progress = (i-34)*tartea;
 
+//					Denboraldi bakoitzeko 306 partida daude, hua gainditzean hurrengo denboraldira tratatuko da.
 //					if(hasiera_partidua>306){
-					if(hasiera_partidua>2){
+						if(hasiera_partidua>2){
 
 						hasiera_denboraldia=i+1;
 						hasiera_partidua = 1;
@@ -62,6 +70,7 @@ public class ProgressBean implements Serializable {
 					e.printStackTrace();
 				}
 
+				
 				if (progress > 100){
 					progress = 100;
 				}

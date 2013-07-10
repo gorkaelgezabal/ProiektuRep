@@ -2,6 +2,48 @@
     <wb-module deploy-name="Web Aplikazioa">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="hibernate-jpa-2.0-api-1.0.0.Final.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/jpa/hibernate-jpa-2.0-api-1.0.0.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="itextpdf-5.4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/iText/itextpdf-5.4.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mysql-connector-java-3.0.9-stable-bin.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/mysql-connector-java-3.0.9-stable-bin.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jsoup-1.7.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/jsoup-1.7.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dom4j-1.6.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/required/dom4j-1.6.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mysql-connector-java-5.1.23-bin.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/mysql-connector-java-5.1.23-bin.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/hibernate3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-collections-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/required/commons-collections-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="antlr-2.7.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/required/antlr-2.7.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-nop-1.6.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/slf4j-nop-1.6.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jta-1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/required/jta-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.6.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/required/slf4j-api-1.6.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javassist-3.12.0.GA.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/required/javassist-3.12.0.GA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="log4j-1.2.14.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/Gorka/Dropbox/Proiektua/Programak/libraries/libHibernate/log4j-1.2.14.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/Web Aplikazioa/build/classes"/>
         <property name="context-root" value="Web Aplikazioa"/>
     </wb-module>

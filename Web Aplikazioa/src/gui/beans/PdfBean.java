@@ -39,7 +39,9 @@ public class PdfBean {
 
 		Iterator it = formatoGabe.iterator();
 		while (it.hasNext()){
-			String unekoDenboraldia = it.next().toString().substring(0, 4);
+			String unekoUrtea = it.next().toString().substring(0, 4);
+			String hurrengoUrtea = Integer.toString(Integer.parseInt(unekoUrtea)+1);
+			String unekoDenboraldia = unekoUrtea+"/"+hurrengoUrtea.substring(hurrengoUrtea.length()-2, hurrengoUrtea.length());
 			denboraldiak.add(unekoDenboraldia);
 
 		}
